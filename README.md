@@ -27,7 +27,7 @@
 ------------------------------------------------------------
 
 X. Requirements.
-    - Good documentation
-    - Good community
-    - date picker and date range picker bundled
-    - well code maintenance
+- Good documentation
+- Good community
+- date picker and date range picker bundled
+- well code maintenance
