@@ -1,0 +1,43 @@
+.search_filter {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.filter_grid {
+  background-color: white;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.filter_border {
+  border-right: 1px solid gray;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.filter_border_left {
+  border-left: 1px solid gray;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-right: 1px solid gray;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.filter_border_right {
+  border-right: 1px solid gray;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.card-container {
+  margin-top: 1.5rem;
+  grid-gap: 1.5rem;
+  display: grid;
+  justify-content: center;
+}

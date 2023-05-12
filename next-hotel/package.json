@@ -1,0 +1,33 @@
+{
+  "name": "next-hotel",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@googlemaps/react-wrapper": "^1.1.35",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.3",
+    "antd": "^5.4.7",
+    "deck.gl": "^8.9.13",
+    "google-map-react": "^2.2.0",
+    "leaflet": "^1.9.3",
+    "mapbox-gl": "^2.14.1",
+    "next": "13.4.1",
+    "ol": "^7.3.0",
+    "pigeon-maps": "^0.21.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.1",
+    "react-map-gl": "^7.0.23"
+  }
+}
