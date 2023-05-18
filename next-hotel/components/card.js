@@ -1,36 +1,40 @@
 import React from "react";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
-import { Avatar, Card } from "antd";
+import { Row, Col, Button } from 'antd';
+import styles from "@/styles/Search.module.css";
+import Image from 'next/image';
 
-const { Meta } = Card;
-
-export default function NextCard() {
+export default function NextCard({ type, imageSrc, price }) {
   return (
-    <Card
-      style={{ width: 300 }}
-      cover={
-        <img
-          alt="example"
-          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-        />
-      }
-      actions={[
-        <SettingOutlined key="setting" />,
-        <EditOutlined key="edit" />,
-        <EllipsisOutlined key="ellipsis" />,
-      ]}
-    >
-      <Meta
-        avatar={
-          <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-        }
-        title="Card title"
-        description="This is the description"
-      />
-    </Card>
+    <card>
+      <Row justify="center" style={{ flexWrap: 'nowrap', marginLeft: '5rem', marginRight: '5rem'}}>
+
+        <Col flex="1 0 50%" span={8} className={`${styles.filter_grid} ${styles.filter_border_left}`}>
+          <Image 
+              src={imageSrc}
+              width={1000}
+              height={1000}
+              layout="responsive"
+              objectFit="contain"
+              className={`${styles.image_radius}`}
+          />
+        </Col>
+        
+        <Col flex="1 0 50%" span={18} className={`${styles.filter_grid} ${styles.filter_border}`}>
+          {type}
+        </Col>
+
+        <Col flex="1 0 25%" span={18} className={`${styles.filter_grid} ${styles.filter_border_right}`}>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ marginBottom: '1rem' }}>
+              THB {price}
+            </div>
+            <div>
+              <Button href="/detail" type="primary">Reserve this room</Button>
+            </div>
+          </div>
+        </Col>
+
+      </Row>
+    </card>
   );
 }

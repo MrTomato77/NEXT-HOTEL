@@ -1,0 +1,25 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #FFC700;
+  padding: 0.3rem;
+  border-radius: 0.6rem;
+  min-width: 250px;
+}
+
+.search-bar-item {
+  margin-left: .1rem;
+  margin-right: .1rem;
+}
+
+@media (max-width: 550px) {
+  .search-bar {
+    flex-wrap: wrap;
+  }
+
+  .search-bar-item {
+    flex-basis: 100%;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+}

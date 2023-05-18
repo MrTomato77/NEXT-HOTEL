@@ -13,26 +13,26 @@
 }
 
 .filter_border {
-  border-right: 1px solid gray;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .filter_border_left {
-  border-left: 1px solid gray;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
-  border-right: 1px solid gray;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .filter_border_right {
-  border-right: 1px solid gray;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .card-container {
@@ -40,4 +40,9 @@
   grid-gap: 1.5rem;
   display: grid;
   justify-content: center;
+}
+
+.image_radius {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }

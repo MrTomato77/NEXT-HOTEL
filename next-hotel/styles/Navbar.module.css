@@ -1,0 +1,27 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1110px;
+  margin: 0 auto;
+}
+
+.nav_logo {
+  flex: 1;
+  background: transparent;
+  border: none;
+}
+
+.header_bg {
+  background-color: #1f2a8c;
+}
+
+.header_text {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.header_margin {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
