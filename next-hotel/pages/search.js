@@ -4,33 +4,7 @@ import FilterBar from "@/components/filterBar";
 import NextCard from "@/components/card";
 import homeStyles from "@/styles/Home.module.css";
 import styles from "@/styles/Search.module.css";
-
-const roomTypes = [
-  {
-    type: "BASIC",
-    imageSrc: "/roomType/basic.jpg",
-    rooms: 100,
-    price: 100,
-  },
-  {
-    type: "FAMILY",
-    imageSrc: "/roomType/family.jpg",
-    rooms: 100,
-    price: 200,
-  },
-  {
-    type: "POOL",
-    imageSrc: "/roomType/pool.jpg",
-    rooms: 100,
-    price: 300,
-  },
-  {
-    type: "SUITE",
-    imageSrc: "/roomType/suite.jpg",
-    rooms: 100,
-    price: 400,
-  },
-];
+import roomData from "@/public/roomData.json";
 
 const Header = () => (
   <div className={`${homeStyles.header_bg}`}>
@@ -61,15 +35,15 @@ export default function SearchPage() {
       <Header />
       <SearchSection />
       <div className={`${homeStyles.max_width} ${styles.search_filter}`}>
-        <FilterBar roomTypes={roomTypes} setFilteredRoomTypes={setFilteredRoomTypes} />
+        <FilterBar roomTypes={roomData} setFilteredRoomTypes={setFilteredRoomTypes} />
       </div>
       <div className={`${homeStyles.max_width}`} style={{ marginTop: "1.5rem", justifyContent: "center", display: "grid", gridGap: "1.5rem" }}>
-        {filteredRoomTypes.map((roomType, index) => (
+        {filteredRoomTypes.map((roomData, index) => (
           <NextCard
             key={index}
-            type={roomType.type}
-            imageSrc={roomType.imageSrc}
-            price={roomType.price}
+            type={roomData.type}
+            imageSrc={roomData.imageSrc}
+            price={roomData.price}
             style={{ marginTop: '1rem' }}
           />
         ))}

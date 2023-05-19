@@ -1,0 +1,23 @@
+.login_background {
+  background-image: url('/Login-BG.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; 
+  min-height: 100vh;
+}
+
+.register_background {
+  background-image: url('/Register-BG.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; 
+  min-height: 100vh;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  min-height: 100vh;
+}

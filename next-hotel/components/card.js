@@ -1,12 +1,12 @@
 import React from "react";
 import { Row, Col, Button } from 'antd';
-import styles from "@/styles/Search.module.css";
+import styles from "@/styles/Card.module.css";
 import Image from 'next/image';
 
 export default function NextCard({ type, imageSrc, price }) {
   return (
     <card>
-      <Row justify="center" style={{ flexWrap: 'nowrap', marginLeft: '5rem', marginRight: '5rem'}}>
+      <Row justify="center" style={{ flexWrap: 'nowrap', marginLeft: '2rem', marginRight: '2rem', maxWidth: "800px"}}>
 
         <Col flex="1 0 50%" span={8} className={`${styles.filter_grid} ${styles.filter_border_left}`}>
           <Image 
@@ -20,7 +20,7 @@ export default function NextCard({ type, imageSrc, price }) {
         </Col>
         
         <Col flex="1 0 50%" span={18} className={`${styles.filter_grid} ${styles.filter_border}`}>
-          {type}
+          <div className={styles.title}>{type}</div> {/* Move type to top left */}
         </Col>
 
         <Col flex="1 0 25%" span={18} className={`${styles.filter_grid} ${styles.filter_border_right}`}>

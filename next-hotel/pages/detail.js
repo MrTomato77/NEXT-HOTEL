@@ -4,67 +4,23 @@ import homeStyles from "@/styles/Home.module.css";
 import styles from "@/styles/Detail.module.css";
 import { Card, Col, Row, Rate, Button } from "antd";
 import Image from "next/image";
+import roomData from "@/public/roomData.json";
 
-const roomTypes = [
-  {
-    type: "BASIC",
-    imageSrc: "/roomType/basic.jpg",
-    floorPlan: "/floorPlan/BASIC.png",
-    rooms: 100,
-    price: 100,
-    description: `
-      Floor-to-ceiling windows in our 42-square meter Deluxe offer
-      abundant natural light of garden view. With wood floors,
-      stylish room design, furnishing in Black Oregon Teak, and
-      cream palette, each accommodation offers a gracious welcome.
-    `,
-    roomSize: "42 sqm.",
-    beds: "1 Single Bed, 1 Double Bed",
-    sleeps: "2 - 4 Persons",
-    amenities: [
-      "Free Wi-Fi",
-      "Private balcony",
-      "Individually controlled air-conditioning",
-      "LCD television with cable / satellite",
-      "Direct-dial telephone",
-      "Mini-bar",
-      "Refrigerator",
-      "Tea & coffee facilities",
-      "Private bathroom",
-      "Bathrobes / slippers / towel / beach towels",
-      "Hairdryer",
-      "Umbrella",
-      "Steam iron and ironing board",
-      "In-room Safety box",
-      "Emergency flashlight",
-    ],
-    rating: {
-      review: 1000,
-      score: 3.8,
-      cleanliness: 4.5,
-      service: 3.5,
-      facilities: 2.3,
-      valueForMoney: 4.2,
-      location: 5.0,
-    },
-  },
-];
-
-const RoomTypeCard = ({ roomType }) => (
-  <Card title={roomType.type} bordered={false}>
+const RoomTypeCard = ({ roomData }) => (
+  <Card title={roomData.type} bordered={false}>
     <div>
-      <p>{roomType.description}</p>
-      <p><strong>Room size:</strong> {roomType.roomSize}</p>
-      <p><strong>Bed(s):</strong> {roomType.beds}</p>
-      <p><strong>Sleeps:</strong> {roomType.sleeps}</p>
+      <p>{roomData.description}</p>
+      <p><strong>Room size:</strong> {roomData.roomSize}</p>
+      <p><strong>Bed(s):</strong> {roomData.beds}</p>
+      <p><strong>Sleeps:</strong> {roomData.sleeps}</p>
     </div>
   </Card>
 );
 
-const AmenitiesCard = ({ roomType }) => (
+const AmenitiesCard = ({ amenities }) => (
   <Card title="IN ROOM AMENITIES" bordered={false}>
     <ul>
-      {roomType.amenities.map((amenity) => (
+      {amenities.map((amenity) => (
         <li key={amenity}>{amenity}</li>
       ))}
     </ul>
@@ -128,12 +84,11 @@ const SearchSection = () => (
   </div>
 );
 
-const ReservationSummary = () => {
-  const totalAmount = 4225;
+const ReservationSummary = ({ price }) => {
   const TotalRow = () => (
     <div className={styles.row}>
       <span className={styles.text}>Total</span>
-      <span className={styles.text}>THB {totalAmount.toFixed(2)}</span>
+      <span className={styles.text}>THB {price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
     </div>
   );
   return (
@@ -151,17 +106,17 @@ const ReservationSummary = () => {
   );
 };
 
-export default function SearchPage() {
+export default function DetailPage() {
   return (
     <content>
       <Header />
       <SearchSection />
       <div className={`${homeStyles.max_width} ${styles.image_filter}`}>
         <Image
-          src={roomTypes[0].imageSrc}
+          src={roomData[0].imageSrc}
           width={200}
           height={100}
-          alt={roomTypes[0].type}
+          alt={roomData[0].type}
           layout="responsive"
           objectFit="contain"
         />
@@ -169,27 +124,27 @@ export default function SearchPage() {
       <div className={`${homeStyles.max_width} ${styles.card_filter}`}>
         <Row gutter={[16, 16]}>
           <Col span={12}>
-            <RoomTypeCard roomType={roomTypes[0]} />
+            <RoomTypeCard roomData={roomData[0]} />
           </Col>
           <Col span={12}>
-            <RatingCard rating={roomTypes[0].rating} />
+            <RatingCard rating={roomData[0].rating} />
           </Col>
           <Col span={12}>
-            <AmenitiesCard roomType={roomTypes[0]} />
+            <AmenitiesCard amenities={roomData[0].amenities} />
           </Col>
           <Col span={12}>
             <Card title="FLOOR PLAN" bordered={false}>
               <Image
-                src={roomTypes[0].floorPlan}
+                src={roomData[0].floorPlan}
                 width={200}
                 height={100}
-                alt={roomTypes[0].type}
+                alt={roomData[0].type}
                 layout="responsive"
                 objectFit="contain"
               />
             </Card>
             <div style={{ marginTop: "1.5rem" }}>
-              <ReservationSummary />
+              <ReservationSummary price={roomData[0].price}/>
             </div>
           </Col>
         </Row>

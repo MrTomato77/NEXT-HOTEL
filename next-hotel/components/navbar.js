@@ -23,6 +23,9 @@ function NavigationButtons() {
       <Button ghost icon={<ShoppingOutlined />}>
         <Link href="/property"> Your property</Link>
       </Button>
+      <Button ghost icon={<UserOutlined />}>
+        <Link href="/profile"> profile</Link>
+      </Button>
       <Button type="primary" icon={<SolutionOutlined />}>
         <Link href="/register"> Register</Link>
       </Button>
@@ -58,6 +61,9 @@ function HamburgerMenu() {
           <Menu.Item icon={<ShoppingOutlined />}>
             <Link href="/property">Your property</Link>
           </Menu.Item>
+          <Menu.Item icon={<UserOutlined />}>
+            <Link href="/profile">profile</Link>
+          </Menu.Item>
           <Menu.Item icon={<SolutionOutlined />}>
             <Link href="/register">Register</Link>
           </Menu.Item>
@@ -86,7 +92,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={styles.header_bg} style={{ paddingTop: ".5rem" }}>
+    <nav className={styles.header_bg} style={{ paddingTop: ".5rem", paddingBottom: ".5rem" }}>
       <div className={styles.nav}>
         <Logo />
         {isMobile ? <HamburgerMenu /> : <NavigationButtons />}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Select } from 'antd';
-import styles from "@/styles/Search.module.css";
+import styles from "@/styles/Filterbar.module.css";
 
 const { Option } = Select;
 
