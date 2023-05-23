@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import SearchBar from "@/components/searchBar";
-import FilterBar from "@/components/filterBar";
 import NextCard from "@/components/card";
 import homeStyles from "@/styles/Home.module.css";
 import styles from "@/styles/Search.module.css";
 import roomData from "@/public/roomData.json";
+import FilterBar from "@/components/filter-bar";
 
 const Header = () => (
   <div className={`${homeStyles.header_bg}`}>
@@ -41,9 +41,16 @@ export default function SearchPage() {
         {filteredRoomTypes.map((roomData, index) => (
           <NextCard
             key={index}
-            type={roomData.type}
+            title={roomData.type}
             imageSrc={roomData.imageSrc}
             price={roomData.price}
+            rate={roomData.rating.score}
+            review={roomData.rating.review}
+            include={roomData.include}
+            size={roomData.roomSizeInt}
+            roomCount={roomData.roomCount}
+            beds={roomData.bedsInt}
+            cook={roomData.cook}
             style={{ marginTop: '1rem' }}
           />
         ))}
