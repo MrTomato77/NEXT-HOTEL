@@ -1,44 +1,124 @@
-.filter_grid {
-  background-color: white;
-  align-items: center;
-  text-align: center;
+.card {
   display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  margin-bottom: 0.1rem;
+  max-width: 55rem;
+  width: 100%;
+  position: relative;
+}
+
+.media {
+  width: auto;
+  height: auto;
+  max-width: 30%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  flex-grow: 1;
+  margin: 0;
+}
+
+.price {
+  flex-basis: 20%;
+  text-align: right;
+  align-self: flex-end;
+  margin: 0;
+}
+
+.priceWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+} 
+
+.review {
+  position: absolute;
+  top: .25rem;
+  right: .75rem;
+  font-size: .9rem;
+  opacity: 75%;
+}
+
+.col3 {
+  flex-basis: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.ratingText {
+  margin-left: 5px;
+}
+
+.cancellation {
+  color: green;
+  margin: 0 ;
+}
+
+.popular {
+  color: #E21B1B;
+}
+
+.highlightIcons {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
   justify-content: center;
 }
 
-.filter_border {
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.highlightIcon {
+  margin-right: 5px;
+  color: black;
 }
 
-.filter_border_left {
-  border-left: 1px solid rgba(0, 0, 0, 0.2);
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.lightGreenText {
+  color: green;
 }
 
-.filter_border_right {
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.iconContainer {
+  position: sticky;
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-content: center;
 }
 
-.image_radius {
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
+.divider {
+  border-right: 1px solid gray;
+  height: 100%;
+  width: 1px;
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
 
-.title {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 1rem;
-  font-weight: bold;
-  font-size: 1.2rem;
+.tax {
+  font-size: .9rem;
+  opacity: 75%;
+}
+
+.chips {
+  margin-bottom: .5rem;
+}
+
+.button {
+  margin-bottom: -1rem;
 }
