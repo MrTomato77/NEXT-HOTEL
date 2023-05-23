@@ -1,7 +1,92 @@
-.center {
+.card {
+  margin-top: 1.5rem;
+  justify-content: center;
+  display: grid;
+  grid-gap: 1.5rem;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ratingBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.475rem;
+  margin-bottom: 0.475rem;
+  border-radius: 0.25rem;
+}
+
+.ratingText {
+  font-weight: bold;
+}
+
+.ratingScore {
+  font-weight: bold;
+}
+
+.max_width {
+  max-width: 55rem;
+  margin: 0 auto;
+}
+
+.text {
+  font-weight: bold;
+  font-size: 1.25rem;
+  max-width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subtext {
+  opacity: .5;
+  font-size: .75rem;
+  max-width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.button {
+  width: 50%;
+  font-size: 1rem;
+  max-width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  min-height: 100vh;
+}
+
+.marginLeftAuto {
+  margin-left: auto;
+}
+
+.paymentStatus {
+  margin-top: 1.45rem;
+  margin-bottom: .7rem;
+}
+
+.topGap {
+  margin-top: 2rem;
 }

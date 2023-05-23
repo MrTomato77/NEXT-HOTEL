@@ -1,0 +1,13 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
