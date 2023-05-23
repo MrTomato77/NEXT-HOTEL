@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "type": "BASIC",
     "imageSrc": "/roomType/basic.jpg",
     "floorPlan": "/floorPlan/BASIC.png",
@@ -7,8 +8,12 @@
     "price": 4225,
     "description": "Floor-to-ceiling windows in our 42-square meter Deluxe offer abundant natural light. With wood floors, stylish room design, furnishing in Black Oregon Teak, and a cream palette, each accommodation offers a gracious welcome.",
     "roomSize": "42 sqm.",
+    "roomSizeInt": 42,
+    "roomCount": 1,
     "beds": "1 Single Bed, 1 Double Bed",
+    "bedsInt": 2,
     "sleeps": "2 - 4 Persons",
+    "cook": true,
     "amenities": [
       "Free Wi-Fi",
       "Private balcony",
@@ -34,9 +39,16 @@
       "facilities": 2.3,
       "valueForMoney": 4.2,
       "location": 5.0
-    }
+    },
+    "include": [
+      "Free WiFi",
+      "Express check-in",
+      "Breakfast",
+      "Keyless access"
+    ]
   },
   {
+    "id": 2,
     "type": "FAMILY",
     "imageSrc": "/roomType/family.jpg",
     "floorPlan": "/floorPlan/FAMILY.png",
@@ -44,8 +56,12 @@
     "price": 11375,
     "description": "New room decoration with 62sqm Family Room features a spacious living corner with large sofa, LCD TV for a homely stay, perfect for families and honeymoon couples. Special features include the delightful Jacuzzi, two queen size beds and private balcony with pleasant garden views.",
     "roomSize": "62 sqm.",
+    "roomSizeInt": 62,
+    "roomCount": 2,
     "beds": "2 Double Bed",
+    "bedsInt": 2,
     "sleeps": "2 - 4 Persons",
+    "cook": true,
     "amenities": [
       "Free Wi-Fi",
       "Private balcony",
@@ -71,9 +87,16 @@
       "facilities": 4.5,
       "valueForMoney": 3.9,
       "location": 4.8
-    }
+    },
+    "include": [
+      "Free WiFi",
+      "Express check-in",
+      "Breakfast",
+      "Keyless access"
+    ]
   },
   {
+    "id": 3,
     "type": "POOL ACCESS",
     "imageSrc": "/roomType/pool.jpg",
     "floorPlan": "/floorPlan/POOL-ACCESS.png",
@@ -81,8 +104,12 @@
     "price": 7215,
     "description": "Beautifully furnished new room decoration, the rooms offer Private balcony with pool access Provide 1Queen size bed+1Single bed, Subtle colors and southern Thai-style decor",
     "roomSize": "42 sqm.",
+    "roomSizeInt": 42,
+    "roomCount": 1,
     "beds": "1 Single Bed, 1 Double Bed",
+    "bedsInt": 2,
     "sleeps": "2 - 4 Persons",
+    "cook": true,
     "amenities": [
       "Free Wi-Fi",
       "Private balcony",
@@ -108,9 +135,16 @@
       "facilities": 2.3,
       "valueForMoney": 4.2,
       "location": 5.0
-    }
+    },
+    "include": [
+      "Free WiFi",
+      "Express check-in",
+      "Breakfast",
+      "Keyless access"
+    ]
   },
   {
+    "id": 4,
     "type": "SUITE",
     "imageSrc": "/roomType/suite.jpg",
     "floorPlan": "/floorPlan/SUITE.png",
@@ -118,8 +152,12 @@
     "price": 16500,
     "description": "Beautifully furnished new room decoration, the rooms offer Private balcony with pool access Provide 1Queen size bed+1Single bed, Subtle colors and southern Thai-style decor",
     "roomSize": "82 sqm.",
+    "roomSizeInt": 82,
+    "roomCount": 3,
     "beds": "2 Bedrooms provide 1 King size bed",
+    "bedsInt": 2,
     "sleeps": "2 - 4 Persons",
+    "cook": true,
     "amenities": [
       "Free Wi-Fi",
       "Private balcony",
@@ -145,6 +183,12 @@
       "facilities": 2.9,
       "valueForMoney": 3.7,
       "location": 4.5
-    }
+    },
+    "include": [
+      "Free WiFi",
+      "Express check-in",
+      "Breakfast",
+      "Keyless access"
+    ]
   }
 ]
