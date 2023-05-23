@@ -3,6 +3,7 @@ import SearchBar from "@/components/searchBar";
 import homeStyles from "@/styles/Home.module.css";
 import styles from "@/styles/Detail.module.css";
 import { Card, Col, Row, Rate, Button } from "antd";
+import Link from 'next/link';
 import Image from "next/image";
 import roomData from "@/public/roomData.json";
 
@@ -10,9 +11,15 @@ const RoomTypeCard = ({ roomData }) => (
   <Card title={roomData.type} bordered={false}>
     <div>
       <p>{roomData.description}</p>
-      <p><strong>Room size:</strong> {roomData.roomSize}</p>
-      <p><strong>Bed(s):</strong> {roomData.beds}</p>
-      <p><strong>Sleeps:</strong> {roomData.sleeps}</p>
+      <p>
+        <strong>Room size:</strong> {roomData.roomSize}
+      </p>
+      <p>
+        <strong>Bed(s):</strong> {roomData.beds}
+      </p>
+      <p>
+        <strong>Sleeps:</strong> {roomData.sleeps}
+      </p>
     </div>
   </Card>
 );
@@ -29,8 +36,10 @@ const AmenitiesCard = ({ amenities }) => (
 
 const RatingBar = ({ text, score }) => {
   const getColorStyle = (score) => {
-    if (score >= 4) return { backgroundColor: "rgba(0, 128, 0, 0.2)", color: "#008000" };
-    if (score >= 3) return { backgroundColor: "rgba(255, 165, 0, 0.2)", color: "#F49E00" };
+    if (score >= 4)
+      return { backgroundColor: "rgba(0, 128, 0, 0.2)", color: "#008000" };
+    if (score >= 3)
+      return { backgroundColor: "rgba(255, 165, 0, 0.2)", color: "#F49E00" };
     return { backgroundColor: "rgba(255, 0, 0, 0.2)", color: "#FF2E2E" };
   };
   const colorStyle = getColorStyle(score);
@@ -43,11 +52,25 @@ const RatingBar = ({ text, score }) => {
 };
 
 const RatingCard = ({ rating }) => {
-  const { review, score, cleanliness, service, facilities, valueForMoney, location } = rating;
-  const formattedReviewCount = review >= 1000 ? review.toLocaleString() : review;
+  const {
+    review,
+    score,
+    cleanliness,
+    service,
+    facilities,
+    valueForMoney,
+    location,
+  } = rating;
+  const formattedReviewCount =
+    review >= 1000 ? review.toLocaleString() : review;
   const cardTitle = (
-    <div className={styles.card_rating} style={{ justifyContent: 'space-between' }}>
-      <span style={{ marginRight: '8px' }}>{`REVIEW (${formattedReviewCount})`}</span>
+    <div
+      className={styles.card_rating}
+      style={{ justifyContent: "space-between" }}
+    >
+      <span
+        style={{ marginRight: "8px" }}
+      >{`REVIEW (${formattedReviewCount})`}</span>
       <Rate value={score} disabled allowHalf />
     </div>
   );
@@ -88,20 +111,28 @@ const ReservationSummary = ({ price }) => {
   const TotalRow = () => (
     <div className={styles.row}>
       <span className={styles.text}>Total</span>
-      <span className={styles.text}>THB {price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+      <span className={styles.text}>
+        THB{" "}
+        {price.toLocaleString(undefined, {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })}
+      </span>
     </div>
   );
   return (
     <div className={styles.container}>
       <div className={styles.row}>
-        <span className={`${styles.subtext} ${styles.marginLeftAuto}`}>W/Taxes & Fees</span>
+        <span className={`${styles.subtext} ${styles.marginLeftAuto}`}>
+          W/Taxes & Fees
+        </span>
       </div>
       <TotalRow />
-      <div className={styles.buttonContainer}>
+      <Link href="/property" className={styles.buttonContainer}>
         <Button className={styles.button} type="primary">
           Reserve
         </Button>
-      </div>
+      </Link>
     </div>
   );
 };
@@ -144,7 +175,7 @@ export default function DetailPage() {
               />
             </Card>
             <div style={{ marginTop: "1.5rem" }}>
-              <ReservationSummary price={roomData[0].price}/>
+              <ReservationSummary price={roomData[0].price} />
             </div>
           </Col>
         </Row>
