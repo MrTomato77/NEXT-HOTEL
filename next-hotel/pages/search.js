@@ -5,6 +5,7 @@ import homeStyles from "@/styles/Home.module.css";
 import styles from "@/styles/Search.module.css";
 import roomData from "@/public/roomData.json";
 import FilterBar from "@/components/filter-bar";
+import { Box } from "@material-ui/core";
 
 const Header = () => (
   <div className={`${homeStyles.header_bg}`}>
@@ -34,10 +35,10 @@ export default function SearchPage() {
     <content>
       <Header />
       <SearchSection />
-      <div className={`${homeStyles.max_width} ${styles.search_filter}`}>
+      <Box className={`${homeStyles.max_width} ${styles.search_filter}`}>
         <FilterBar roomTypes={roomData} setFilteredRoomTypes={setFilteredRoomTypes} />
-      </div>
-      <div className={`${homeStyles.max_width}`} style={{ marginTop: "1.5rem", justifyContent: "center", display: "grid", gridGap: "1.5rem" }}>
+      </Box>
+      <Box className={`${homeStyles.max_width} ${styles.card}`}>
         {filteredRoomTypes.map((roomData, index) => (
           <NextCard
             key={index}
@@ -54,7 +55,7 @@ export default function SearchPage() {
             style={{ marginTop: '1rem' }}
           />
         ))}
-      </div>
+      </Box>
     </content>
   );
 }
