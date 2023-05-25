@@ -21,16 +21,16 @@ function NavigationButtons() {
   return (
     <Space>
       <Button ghost icon={<ShoppingOutlined />}>
-        <Link href="/property"> Your property</Link>
+        <a href="/property"> Your property</a>
       </Button>
       <Button ghost icon={<UserOutlined />}>
-        <Link href="/profile"> profile</Link>
+        <a href="/profile"> profile</a>
       </Button>
       <Button type="primary" icon={<SolutionOutlined />}>
-        <Link href="/register"> Register</Link>
+        <a href="/register"> Register</a>
       </Button>
       <Button type="primary" icon={<UserOutlined />}>
-        <Link href="/login"> Login</Link>
+        <a href="/login"> Login</a>
       </Button>
     </Space>
   );
