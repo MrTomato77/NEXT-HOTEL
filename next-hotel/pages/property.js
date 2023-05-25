@@ -1,83 +1,27 @@
+import React, { useState } from "react";
+import { Col, Row, Button } from "antd";
 import NextCard from "@/components/card";
 import Box from "@mui/material/Box";
-import { Card, Col, Row, Button } from "antd";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styles from "@/styles/Property.module.css";
 import roomData from "@/public/roomData.json";
 import paymentData from "@/public/paymentData.json";
-
-const BookInfoCard = ({ bookInfo }) => (
-  <div className={styles.cardContainer}>
-    <Card
-      title="Booking information"
-      bordered={false}
-      bodyStyle={{ paddingTop: "0", paddingBottom: "0" }}
-    >
-      <div
-        style={{ display: "flex", flexDirection: "column", minHeight: "100%" }}
-      >
-        <div style={{ flex: "1 0 auto" }}>
-          <p>
-            <strong>First Name:</strong> {bookInfo.first_name}
-          </p>
-          <p>
-            <strong>Last Name:</strong> {bookInfo.last_name}
-          </p>
-          <p>
-            <strong>Email:</strong> {bookInfo.email}
-          </p>
-          <p>
-            <strong>Telephone:</strong> {bookInfo.tel}
-          </p>
-        </div>
-        <div className={styles.paymentStatus}>
-          <strong>Payment Status:</strong> {bookInfo.payment_status}
-        </div>
-      </div>
-    </Card>
-  </div>
-);
-
-const SummaryCard = ({ summary, total }) => (
-  <div className={styles.cardContainer}>
-    <Card
-      title="Summary"
-      bordered={false}
-      bodyStyle={{ paddingTop: "0", paddingBottom: ".4rem " }}
-    >
-      <Box>
-        <p>
-          <strong>Check in:</strong> {summary.check_in}
-        </p>
-        <p>
-          <strong>Check out:</strong> {summary.check_out}
-        </p>
-        <p>
-          <strong>Night:</strong> {summary.night}
-        </p>
-        <p>
-          <strong>Discount:</strong> {summary.discount}
-        </p>
-        <Box className={styles.row}>
-          <span className={`${styles.subtext} ${styles.marginLeftAuto}`}>
-            W/Taxes & Fees
-          </span>
-        </Box>
-        <Box className={styles.row}>
-          <span className={styles.text}>Total</span>
-          <span className={styles.text}>
-            THB{" "}
-            {total.toLocaleString(undefined, {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}
-          </span>
-        </Box>
-      </Box>
-    </Card>
-  </div>
-);
+import Dialog from "@mui/material/Dialog";
+import BookInfoCard from "@/components/book-info-card";
+import SummaryCard from "@/components/summary-card";
+import ReviewDialog from "@/components/review-dialog";
 
 export default function Property() {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const handleOpen = () => setDialogOpen(true);
+  const handleClose = () => setDialogOpen(false);
+
+  const handleSubmitReview = (reviewData) => {
+    // Handle the review submission
+    console.log(reviewData); // Replace with your actual submission logic
+  };
+
   return (
     <div className={styles.topGap}>
       <Box className={`${styles.card} ${styles.max_width}`}>
@@ -111,6 +55,7 @@ export default function Property() {
               </Box>
               <Box className={styles.buttonContainer}>
                 <Button
+                  onClick={handleOpen}
                   style={{ marginRight: "1rem" }}
                   className={styles.button}
                   type="primary"
@@ -130,6 +75,23 @@ export default function Property() {
           </Row>
         </Box>
       </Box>
+      {dialogOpen && (
+        <Dialog
+          open={dialogOpen}
+          onClose={handleClose}
+          aria-labelledby="customized-dialog-title"
+          sx={{
+            "& .MuiDialog-paper": {
+              width: "20rem",
+              maxWidth: "100%",
+              margin: "0 auto",
+            },
+          }}
+        >
+          <ReviewDialog onClose={handleClose} onSubmit={handleSubmitReview} />
+        </Dialog>
+      )}
+      <ToastContainer />
     </div>
   );
 }
