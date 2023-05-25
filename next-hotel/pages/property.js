@@ -1,32 +1,80 @@
-import React, { useState } from "react";
-import { Col, Row, Button } from "antd";
+import React, { useState, useEffect } from "react";
+import { Col, Row, Button, Spin, Empty } from "antd";
 import NextCard from "@/components/card";
 import Box from "@mui/material/Box";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "@/styles/Property.module.css";
-import roomData from "@/public/roomData.json";
-import paymentData from "@/public/paymentData.json";
+import axios from "axios";
 import Dialog from "@mui/material/Dialog";
 import BookInfoCard from "@/components/book-info-card";
 import SummaryCard from "@/components/summary-card";
 import ReviewDialog from "@/components/review-dialog";
 
 export default function Property() {
+  const [roomData, setRoomData] = useState(null);
+  const [paymentData, setPaymentData] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchRoomData = async () => {
+      try {
+        const response = await axios.get("/api/room");
+        const roomData = response.data;
+        setRoomData(roomData);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+      }
+    };
+
+    const fetchPaymentData = async () => {
+      try {
+        const response = await axios.get("/api/payment");
+        const paymentData = response.data;
+        setPaymentData(paymentData);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+      }
+    };
+
+    fetchRoomData();
+    fetchPaymentData();
+  }, []);
+
   const handleOpen = () => setDialogOpen(true);
   const handleClose = () => setDialogOpen(false);
 
   const handleSubmitReview = (reviewData) => {
-    // Handle the review submission
-    console.log(reviewData); // Replace with your actual submission logic
+    console.log(reviewData);
   };
+
+  if (loading) {
+    return (
+      <Spin tip="Loading" size="large">
+        <div className="loading-content" />
+      </Spin>
+    );
+  }
+
+  if (!roomData) {
+    return <Empty description="You don't have a reserved room." style={{ marginTop: "5rem" }}/>;
+  }
+
+  if (!paymentData) {
+    return <Empty description="You have a reserved accommodation, but no payment information." style={{ marginTop: "5rem" }}/>;
+  }
 
   return (
     <div className={styles.topGap}>
       <Box className={`${styles.card} ${styles.max_width}`}>
         <Box className={`${styles.card} ${styles.max_width}`}>
           <NextCard
+            id={roomData[0].id}
             title={roomData[0].type}
             imageSrc={roomData[0].imageSrc}
             price={roomData[0].price}

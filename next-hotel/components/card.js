@@ -13,6 +13,7 @@ import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import BedIcon from '@mui/icons-material/Bed';
 import MicrowaveIcon from '@mui/icons-material/Microwave';
 import styles from "@/styles/Card.module.css";
+import { useRouter } from "next/router";
 
 const useCol2Styles = makeStyles({
   root: {
@@ -20,7 +21,6 @@ const useCol2Styles = makeStyles({
     paddingBottom: 0,
     paddingLeft: ".75rem",
     paddingRight: ".75rem",
-
   },
 });
 
@@ -30,7 +30,6 @@ const useCol3Styles = makeStyles({
     paddingBottom: 0,
     paddingLeft: '.75rem',
     paddingRight: ".75rem",
-
   },
 });
 
@@ -44,15 +43,20 @@ export default function NextCard({
   size,
   roomCount,
   beds,
-  cook
+  cook,
+  id,
 }) {
   const formattedPrice = price.toLocaleString("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
-
   const col2 = useCol2Styles();
   const col3 = useCol3Styles();
+
+  const router = useRouter();
+  const handleViewDetails = () => {
+    router.push(`/detail?id=${id}`);
+  };
 
   return (
     <Card className={styles.card}>
@@ -86,7 +90,7 @@ export default function NextCard({
           </Typography>
         </Box>
         <Box>
-        <blockquote
+          <blockquote
             style={{
               margin: '1em 0',
               paddingLeft: '0.5rem',
@@ -96,26 +100,26 @@ export default function NextCard({
               outline: '1px solid #f1b8e7!important'
             }}
           >
-          <Typography variant="caption" className={styles.cancellation}>
-            <Box marginTop={.5}>
-              <strong>Free cancellation</strong>
-            </Box>
-          </Typography>
-          <Typography variant="caption" className={styles.cancellation}>
-            <Box marginTop={-.5}>
-              You can cancel later, so lock in this great price today!
-            </Box>
-          </Typography>
-        </blockquote>
+            <Typography variant="caption" className={styles.cancellation}>
+              <Box marginTop={.5}>
+                <strong>Free cancellation</strong>
+              </Box>
+            </Typography>
+            <Typography variant="caption" className={styles.cancellation}>
+              <Box marginTop={-.5}>
+                You can cancel later, so lock in this great price today!
+              </Box>
+            </Typography>
+          </blockquote>
         </Box>
         <Box className={styles.iconContainer}>
-          <Divider style={{ marginBottom: '.5rem' }}/>
+          <Divider style={{ marginBottom: '.5rem' }} />
           <Box className={styles.highlightIcons}>
-            <HomeIcon className={styles.highlightIcon}/>{size}m²
-            <Divider orientation="vertical" variant="middle" flexItem/>
-            <MeetingRoomIcon className={styles.highlightIcon}/>x{roomCount}
-            <Divider orientation="vertical" variant="middle" flexItem/>
-            <BedIcon className={styles.highlightIcon}/>x{beds}
+            <HomeIcon className={styles.highlightIcon} />{size}m²
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <MeetingRoomIcon className={styles.highlightIcon} />x{roomCount}
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <BedIcon className={styles.highlightIcon} />x{beds}
             {cook && <Divider orientation="vertical" variant="middle" flexItem />}
             {cook && <MicrowaveIcon className={styles.highlightIcon} />}
           </Box>
@@ -132,7 +136,7 @@ export default function NextCard({
           </Box>
           <Box className={styles.tax}>W/Taxes & Fees</Box>
         </Typography>
-        <Button href='/detail' type="primary" block className={styles.button}>
+        <Button onClick={handleViewDetails} type="primary" block className={styles.button}>
           View Details
         </Button>
       </CardContent>

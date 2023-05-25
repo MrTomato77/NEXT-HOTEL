@@ -35,3 +35,12 @@ body {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+.loading-content {
+  padding: 50px;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 4px;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+}

@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+.max_width {
+  max-width: 1110px;
+  margin: 0 auto;
+}
+
 .card_filter {
   margin-top: 1.5rem;
   justify-content: center;
@@ -73,7 +78,7 @@
   font-size: 1rem;
   max-width: 50%;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: hidden; 
   text-overflow: ellipsis;
   display: flex;
   justify-content: center;
@@ -82,4 +87,10 @@
 
 .marginLeftAuto {
   margin-left: auto;
+}
+
+.button_box {
+  margin-top: .5rem;
+  display: flex;
+  justify-content: flex-end;
 }
