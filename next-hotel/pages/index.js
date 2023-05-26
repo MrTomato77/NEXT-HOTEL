@@ -1,5 +1,5 @@
 import React from "react";
-import { Spin } from "antd";
+import LoadingSpinner from '@/components/LoadingSpinner';
 import Header from "@/components/Home/Header";
 import SearchSection from "@/components/Search/SearchSection";
 import RoomTypesSection from "@/components/Home/RoomTypesSection";
@@ -15,9 +15,7 @@ export default function Home() {
       <Header />
       <SearchSection />
       {roomLoading ? (
-        <Spin tip="Loading" size="large">
-          <div className="loading-content" />
-        </Spin>
+        <LoadingSpinner/>
       ) : (
         <div className={styles.max_width}>
           <RoomTypesSection roomData={roomData} />

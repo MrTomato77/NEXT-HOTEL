@@ -1,49 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { Card, Form, Input, Button, Spin } from "antd";
+import React, { useEffect } from "react";
+import { Card, Form, Input, Button } from "antd";
+import LoadingSpinner from "@/components/LoadingSpinner";
 import styles from "@/styles/Profile.module.css";
-import axios from "axios";
+import { useUserData } from "./api/user";
 
 export default function Profile() {
-  const [loading, setLoading] = useState(true);
-  const [userInfo, setUserInfo] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-  });
-
-  const fetchUserInfo = async () => {
-    try {
-      const response = await axios.get("/api/user");
-      const userData = response.data;
-      setUserInfo(userData);
-      setLoading(false);
-
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { userData, userLoading } = useUserData();
 
   const onFinish = (values) => {
     console.log(values);
   };
 
   useEffect(() => {
-    fetchUserInfo();
-  }, []);
+    // Do something with userData
+    if (userData) {
+      console.log(userData);
+    }
+  }, [userData]);
 
   return (
     <div className={styles.center}>
       <div className={styles.container}>
         <Card title="Edit Profile" className={styles.card}>
-          {loading ? (
-            <Spin tip="Loading" size="large">
-              <div className="loading-content" />
-            </Spin>
+          {userLoading ? (
+            <LoadingSpinner />
           ) : (
             <Form
               onFinish={onFinish}
-              initialValues={userInfo[0]}
+              initialValues={userData[0]}
               labelCol={{ span: 4 }}
               wrapperCol={{ span: 20 }}
               colon={false}

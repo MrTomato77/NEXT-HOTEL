@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col, Row, Empty, Spin } from "antd";
+import { Card, Col, Row, Empty } from "antd";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Header from "@/components/Detail/Header";
@@ -8,6 +8,7 @@ import AmenitiesCard from "@/components/Detail/AmenitiesCard";
 import RatingCard from "@/components/Detail/RatingCard";
 import ReservationSummary from "@/components/Detail/ReservationSummary";
 import styles from "@/styles/Detail.module.css";
+import LoadingSpinner from '@/components/LoadingSpinner';
 import { useRoomID } from "./api/room";
 
 export default function DetailPage() { 
@@ -19,9 +20,7 @@ export default function DetailPage() {
     <content className={styles.max_width}>
       <Header />
       {roomLoading ? (
-        <Spin tip="Loading" size="large">
-          <div className="loading-content" />
-        </Spin>
+        <LoadingSpinner/>
       ) : !room ? (
         <Empty style={{ marginTop: "5rem" }} description="No rooms available" />
       ) : (

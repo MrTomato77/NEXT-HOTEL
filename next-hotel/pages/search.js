@@ -5,10 +5,11 @@ import Header from "@/components/Search/Header";
 import SearchSection from "@/components/Search/SearchSection";
 import FilterBar from "@/components/filter-bar";
 import { Box } from "@material-ui/core";
-import { Empty, Spin } from "antd";
+import { Empty } from "antd";
 import NextCard from "@/components/card";
 import homeStyles from "@/styles/Home.module.css";
 import styles from "@/styles/Search.module.css";
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 export default function SearchPage() {
   const [filteredRoomTypes, setFilteredRoomTypes] = useState([]);
@@ -34,9 +35,7 @@ export default function SearchPage() {
       </Box>
       <Box className={`${homeStyles.max_width} ${styles.card}`}>
         {roomLoading ? (
-          <Spin tip="Loading" size="large">
-            <div className="loading-content" />
-          </Spin>
+          <LoadingSpinner/>
         ) : !filteredRoomTypes || filteredRoomTypes.length === 0 ? (
           <Box>
             <Empty
