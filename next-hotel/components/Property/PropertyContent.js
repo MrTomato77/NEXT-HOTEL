@@ -9,33 +9,39 @@ import SummaryCard from '@/components/summary-card';
 const PropertyContent = ({ roomData, paymentData, handleOpen }) => (
   <Box className={`${styles.card} ${styles.max_width}`}>
     <Box className={`${styles.card} ${styles.max_width}`}>
-      <NextCard
-        id={roomData[0].id}
-        title={roomData[0].type}
-        imageSrc={roomData[0].imageSrc}
-        price={roomData[0].price}
-        rate={roomData[0].rating.score}
-        review={roomData[0].rating.review}
-        include={roomData[0].include}
-        size={roomData[0].roomSizeInt}
-        roomCount={roomData[0].roomCount}
-        beds={roomData[0].bedsInt}
-        cook={roomData[0].cook}
-      />
+      {roomData && (
+        <NextCard
+          id={roomData.id}
+          title={roomData.type}
+          imageSrc={roomData.imageSrc}
+          price={roomData.price}
+          rate={roomData.rating.score}
+          review={roomData.rating.review}
+          include={roomData.include}
+          size={roomData.roomSizeInt}
+          roomCount={roomData.roomCount}
+          beds={roomData.bedsInt}
+          cook={roomData.cook}
+        />
+      )}
     </Box>
     <Box>
       <Row gutter={[16, 16]} style={{ height: '100%' }}>
         <Col xs={24} sm={24} md={14} lg={14} xl={14}>
           <Box className={styles.container}>
-            <BookInfoCard bookInfo={paymentData[0].booking_information} />
+            {paymentData && (
+              <BookInfoCard bookInfo={paymentData.booking_information} />
+            )}
           </Box>
         </Col>
         <Col xs={24} sm={24} md={10} lg={10} xl={10}>
           <Box className={styles.container}>
-            <SummaryCard
-              summary={paymentData[0].summary}
-              total={paymentData[0].total}
-            />
+            {paymentData && (
+              <SummaryCard
+                summary={paymentData.summary}
+                total={paymentData.total}
+              />
+            )}
           </Box>
           <Box className={styles.buttonContainer}>
             <Button
@@ -47,11 +53,7 @@ const PropertyContent = ({ roomData, paymentData, handleOpen }) => (
             >
               Review
             </Button>
-            <Button
-              href="/payment"
-              className={styles.button}
-              type="primary"
-            >
+            <Button href="/payment" className={styles.button} type="primary">
               Payment
             </Button>
           </Box>

@@ -33,8 +33,8 @@ export default function Property() {
       ) : (
         <>
           <PropertyContent
-            roomData={roomData}
-            paymentData={paymentData}
+            roomData={roomData[0]}
+            paymentData={paymentData[0]}
             handleOpen={handleOpen}
           />
           <Dialog
