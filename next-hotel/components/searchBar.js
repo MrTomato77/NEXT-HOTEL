@@ -4,7 +4,6 @@ import styles from "@/styles/SearchBar.module.css";
 
 const { RangePicker } = DatePicker;
 const { Option } = Select;
-
 const persons = ["1", "2", "3", "4", "5", "6"];
 
 export default function SearchBar() {

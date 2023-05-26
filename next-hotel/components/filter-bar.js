@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Space, Radio, Dropdown, Menu } from "antd";
 import { DownOutlined, UnorderedListOutlined, FilterOutlined } from "@ant-design/icons";
-import styles from "@/styles/Filterbar.module.css";
 import { useRouter } from "next/router";
+import styles from "@/styles/Filterbar.module.css";
 
 const options = [
   {
@@ -35,21 +35,24 @@ export default function FilterBar({ roomTypes, setFilteredRoomTypes }) {
     router.push(`/search?type=${e.key}`);
   };
 
-  const menuItems = [
-    ...roomTypes.map((roomType) => ({
-      type: "item",
-      key: roomType.type,
-      label: roomType.type,
-    })),
-    {
-      type: "divider",
-    },
-    {
-      type: "item",
-      key: "All",
-      label: "All",
-    },
-  ];
+  const menuItems = roomTypes
+  ? [
+      ...roomTypes.map((roomType) => ({
+        type: "item",
+        key: roomType.type,
+        label: roomType.type,
+      })),
+      {
+        type: "divider",
+      },
+      {
+        type: "item",
+        key: "All",
+        label: "All",
+      },
+    ]
+  : [];
+
 
   const menu = (
     <Menu onClick={handleFilterChange}>
@@ -64,7 +67,7 @@ export default function FilterBar({ roomTypes, setFilteredRoomTypes }) {
   );
 
   useEffect(() => {
-    let filteredTypes = [...roomTypes];
+    let filteredTypes = roomTypes ? [...roomTypes] : [];
     if (selectedType !== "All") {
       filteredTypes = filteredTypes.filter((roomType) => roomType.type === selectedType);
     }
@@ -75,6 +78,7 @@ export default function FilterBar({ roomTypes, setFilteredRoomTypes }) {
     }
     setFilteredRoomTypes(filteredTypes);
   }, [selectedType, selectedSort, roomTypes, setFilteredRoomTypes]);
+  
 
   return (
     <div className={styles.filter}>
