@@ -1,15 +1,41 @@
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const BASE_URL = "https://run.mocky.io/v3/0533212a-52c3-413a-9fa4-f9549f8997fe";
+const BASE_URL = 'https://run.mocky.io/v3/0533212a-52c3-413a-9fa4-f9549f8997fe';
 
-export default async function handler(req, res) {
-  try {
-    const response = await axios.get(BASE_URL);
-    const userData = response.data;
-    res.status(200).json(userData);
+export function useUserData() {
+  const [userData, setUserData] = useState(null);
+  const [userLoading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "An error occurred while fetching user data" });
-  }
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get(BASE_URL);
+      setUserData(response.data);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  return { userData, userLoading, error };
+}
+
+export function useUserID(id) {
+  const { userData, userLoading, error } = useUserData();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    if (id && userData) {
+      const foundUser = userData.find((user) => user.id === id);
+      setUser(foundUser || null);
+    }
+  }, [id, userData]);
+
+  return { user, userLoading, error };
 }
