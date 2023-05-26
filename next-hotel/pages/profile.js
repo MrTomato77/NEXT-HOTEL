@@ -12,24 +12,25 @@ export default function Profile() {
     phone: "",
   });
 
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const response = await axios.get("/api/user");
-        const userData = response.data;
-        setUserInfo(userData);
-        setLoading(false);
+  const fetchUserInfo = async () => {
+    try {
+      const response = await axios.get("/api/user");
+      const userData = response.data;
+      setUserInfo(userData);
+      setLoading(false);
 
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchUserInfo();
-  }, []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const onFinish = (values) => {
     console.log(values);
   };
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
 
   return (
     <div className={styles.center}>

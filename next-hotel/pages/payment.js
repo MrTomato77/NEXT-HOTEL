@@ -11,18 +11,18 @@ const Payment = () => {
   const [paymentData, setPaymentData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchPaymentData = async () => {
-      try {
-        const response = await axios.get("/api/payment");
-        setPaymentData(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-        setLoading(false);
-      }
-    };
+  const fetchPaymentData = async () => {
+    try {
+      const response = await axios.get("/api/payment");
+      setPaymentData(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchPaymentData();
   }, []);
 
