@@ -14,7 +14,7 @@ export default function Home() {
     <content>
       <Header />
       <SearchSection />
-      {loading ? (
+      {roomLoading ? (
         <Spin tip="Loading" size="large">
           <div className="loading-content" />
         </Spin>

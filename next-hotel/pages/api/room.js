@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const BASE_URL = "https://run.mocky.io/v3/f8f7aca8-015a-4d52-bf26-f459a785a3dc";
 
-export const useRoomData = () => {
+export function useRoomData() {
   const [roomData, setRoomData] = useState([]);
   const [roomLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,7 +26,7 @@ export const useRoomData = () => {
   return { roomData, roomLoading, error };
 };
 
-export const useRoomID = (id) => {
+export function useRoomID(id) {
   const { roomData, roomLoading, error } = useRoomData();
   const [room, setRoom] = useState(null);
 
@@ -37,5 +37,5 @@ export const useRoomID = (id) => {
     }
   }, [id, roomData]);
 
-  return { room, loading, error };
+  return { room, roomLoading, error };
 };
